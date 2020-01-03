@@ -1,0 +1,14 @@
+Git helpers:
+
+Tworzenie nowego brancha:
+git branch - sprawdza aktualnego brancha
+git checkout -b nazwa_brancha - tworzy nowy branch - przed tym upewnij sie ze jestes na masterze
+git checkout nazwa_brancha - przelacza na branch
+git status - sprawdza czy sa jakeis zmiany w plikach
+git pull - pobiera najnowsze zmiany z mastera / uaktualnia branch lokalnie
+
+storage - local storage (class)
+services - logika do pobierania danych
+containers - wyswietlanie danych - podstrony
+helpers - generyczne funkcje ktore moga zostac uzyte w kilku miejscach
+utils - to samo co helpers tylko ze UI

@@ -1,0 +1,22 @@
+@mixin mq {
+    @media screen and (min-width: 732px) {
+        .header {
+            .background {
+                margin-left: -42%;
+            }
+
+            .hamburger {
+                margin: 40px 0 0 660px;
+            }
+        }
+
+        main {
+            .home {
+                margin-top: 300px;
+                .character {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
