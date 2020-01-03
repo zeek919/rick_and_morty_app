@@ -6,40 +6,38 @@
     z-index: -1;
 }
 
-main {
-    .home {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        top: 40%;
+.home {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 40%;
+}
 
-        .search-field {
-            border-radius: 50px;
-            padding: 20px;
-            width: 80%;
-            background: #091332;
-            border: none;
-            text-align: center;
-            font-family: 'Gloria Hallelujah';
-            color: rgb(243, 243, 243);
+.search-field {
+    border-radius: 50px;
+    padding: 20px;
+    width: 80%;
+    background: #091332;
+    border: none;
+    text-align: center;
+    font-family: 'Gloria Hallelujah';
+    color: rgb(243, 243, 243);
 
-            @include for-desktop-up {
-                width: 30%;
-            }
-        }
+    @include for-desktop-up {
+        width: 30%;
+    }
+}
 
-        .search-btn {
-            border: none;
-            margin-left: 5%;
-            width: 15%;
-            height: 70px;
-            background: none;
+.search-btn {
+    border: none;
+    margin-left: 5%;
+    width: 15%;
+    height: 70px;
+    background: none;
 
-            @include for-desktop-up {
-                margin-left: 2%;
-            }
-        }
+    @include for-desktop-up {
+        margin-left: 2%;
     }
 }
