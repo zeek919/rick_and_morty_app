@@ -13,32 +13,37 @@
     </head>
     <body>
         <header class="header">
-            <img class="background" src="./src/images/header.png" alt="some trouble" />
+            <img class="header-background" src="./src/images/header.png" alt="some trouble" />
 
             <nav>
+                <!-- HAMBURGER BUTTON -->
                 <button class="hamburger closed" id="hamburger">
                     <div class="line"></div>
                 </button>
 
+                <!-- HAMBURGER MENU-->
                 <div class="menu" id="menu">
-                    <button class="link">Home</button>
-                    <button class="link">Character</button>
-                    <button class="link">Location</button>
-                    <button class="link">Favourite</button>
+                    <button class="menu-btn">Home</button>
+                    <button class="menu-btn">Character</button>
+                    <button class="menu-btn">Location</button>
+                    <button class="menu-btn">Favourite</button>
                 </div>
             </nav>
         </header>
+
         <main>
-            <div class="home">
+            <!-- HOME MENU-->
+            <section class="home">
+                <!-- CHARACTER NAME INPUT-->
                 <input
-                    class="character"
+                    class="search-field"
                     type="text"
                     placeholder="Hi! I'm Mr. Meeseeks, look at me!"
                 />
-                <button class="send">
+                <button class="search-btn">
                     <img src="./src/images/send.png" />
                 </button>
-            </div>
+            </section>
         </main>
     </body>
 </html>

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import '../scss/main.scss';
 import { HAMBURGER_BUTTON, NAVIGATION_MENU } from './constants/hamburger';
-import { toggle } from './utils/toggle';
+import { classToggler } from './utils/classToggler';
 
-toggle(HAMBURGER_BUTTON, NAVIGATION_MENU, 'open', 'show');
+classToggler(HAMBURGER_BUTTON, NAVIGATION_MENU, 'open', 'show');

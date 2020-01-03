@@ -1,4 +1,4 @@
-export const toggle = (item, nextItem, className, nextClassName) => {
+export const classToggler = (item, nextItem, className, nextClassName) => {
     item.addEventListener('click', () => {
         item.classList.toggle(`${className}`);
     });

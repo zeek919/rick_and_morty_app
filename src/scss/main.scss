@@ -1,25 +1,16 @@
 @import './common.scss';
 @import './variables.scss';
 @import './media.scss';
+@import './home.scss';
 
-body {
-    margin: 0;
-    padding: 0;
-    background: #091332;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
 .header {
-    .background {
-        position: absolute;
-        margin-left: -115%;
-        width: 1350px;
-        z-index: -1;
-    }
+    position: relative;
+    height: 100vh;
 
     .hamburger {
         position: absolute;
-        margin: 40px 0 0 340px;
+        margin: 40px 0 0 0;
+        right: 30px;
         padding: 0;
         background: none;
         height: 40px;
@@ -28,6 +19,10 @@ body {
         flex-direction: column;
         justify-content: center;
         border: none;
+
+        @include for-desktop-up {
+            display: none;
+        }
 
         .line {
             width: 100%;
@@ -80,17 +75,32 @@ body {
         flex-direction: column;
         background: rgba($color: #000000, $alpha: 0.7);
         width: 100%;
-        height: 100%;
+        height: 0%;
         visibility: hidden;
         transform: translateY(710px);
         transition: 0.3s;
         animation-timing-function: ease-in-out;
 
-        .link:first-of-type {
-            margin-top: 160px;
+        @include for-desktop-up {
+            flex-direction: row;
+            background: transparent;
+            visibility: visible;
+            justify-content: space-evenly;
+            margin: 0;
+            transform: translateY(0);
+            position: relative;
+            top: 10px;
         }
 
-        .link {
+        .menu-btn:first-of-type {
+            margin-top: 160px;
+
+            @include for-desktop-up {
+                margin-top: 0;
+            }
+        }
+
+        .menu-btn {
             background: none;
             border: none;
             font-size: 34px;
@@ -98,7 +108,7 @@ body {
             color: rgb(243, 243, 243);
         }
 
-        .link:hover {
+        .menu-btn:hover {
             color: rgb(204, 204, 204);
             transition: 0.5s;
         }
@@ -108,40 +118,7 @@ body {
         visibility: visible;
         animation-timing-function: ease-in-out;
         transform: translateY(40px);
+        height: 100%;
         transition: 0.3s;
     }
 }
-
-main {
-    z-index: -2;
-    .home {
-        position: absolute;
-        margin-top: 150px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 70%;
-
-        .character {
-            border-radius: 50px;
-            padding: 20px;
-            width: 80%;
-            background: #091332;
-            border: none;
-            text-align: center;
-            font-family: 'Gloria Hallelujah';
-            color: rgb(243, 243, 243);
-        }
-
-        .send {
-            border: none;
-            width: 15%;
-            height: 70px;
-            background: none;
-        }
-    }
-}
-
-@include mq-tablet;
-@include mq-desktop;
