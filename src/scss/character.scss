@@ -1,0 +1,125 @@
+label {
+    font-size: 20px;
+    color: #5b719c;
+}
+input[type='radio'] + label {
+    display: block;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+label:before {
+    margin-top: 0em;
+}
+
+input[type='radio'] + label:before {
+    content: '';
+    border: 0.1em solid $txt;
+    background-color: #1c2541;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding: 0 0 0.3em 0.2em;
+    margin-right: 0.2em;
+    vertical-align: center;
+    color: transparent;
+}
+
+input[type='radio']:checked + label:before {
+    background-color: #fff;
+    color: #fff;
+    border-color: $txt;
+}
+
+.radio-slider {
+    position: absolute;
+    background: none;
+    height: 40px;
+    width: 50px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 4%;
+    left: 10%;
+    transition: 0.3s;
+
+    @include for-desktop-up {
+        display: none;
+    }
+}
+
+.arrow-slide {
+    transform: translateX(42vw);
+    transition: 0.3s;
+}
+
+.arrow-slide .arrow::before {
+    transform: rotateZ(-30deg);
+    transition: 0.3s;
+}
+
+.arrow-slide .arrow::after {
+    transform: rotateZ(30deg);
+    transition: 0.3s;
+}
+
+.arrow::before {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+
+    transform: rotateZ(30deg);
+    transition: 0.3s;
+    content: '';
+}
+
+.arrow::after {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    margin-top: 14px;
+
+    transform: rotateZ(-30deg);
+    transition: 0.3s;
+    content: '';
+}
+
+.radio-container {
+    position: fixed;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transform: translateX(-100%);
+
+    @include for-desktop-up {
+        background-color: transparent;
+        transform: translateX(0);
+        top: 10%;
+    }
+
+    transition: 0.3s;
+}
+
+.radio-menu-slide {
+    transform: translateX(0);
+    transition: 0.3s;
+}
+
+.radio-box {
+    position: relative;
+    left: 10%;
+}
+
+.radio-header {
+    font-size: 26px;
+    color: $txt;
+}

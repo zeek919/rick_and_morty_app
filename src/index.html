@@ -14,6 +14,7 @@
     <body>
         <header class="header">
             <img class="header-background" src="./src/images/header.png" alt="some trouble" />
+            <h1 class="page-title">CHARACTER</h1>
 
             <nav>
                 <!-- HAMBURGER BUTTON -->
@@ -43,6 +44,58 @@
                 <button class="search-btn">
                     <img src="./src/images/send.png" />
                 </button>
+            </section>
+
+            <!-- CHARACTER -->
+            <section class="character">
+                <!--RADIOS SHOW BUTTON-->
+                <button class="radio-slider" id="slider">
+                    <div class="arrow"></div>
+                </button>
+
+                <!-- CHARACTER RADIOS-->
+                <div class="radio-container" id="radio-container">
+                    <!-- RADIO STATUS -->
+                    <div class="radio-box">
+                        <h2 class="radio-header">Status</h2>
+                        <input type="radio" id="None_1" name="status" />
+                        <label for="None_1">None</label>
+                        <input type="radio" id="Alive" name="status" />
+                        <label for="Alive">Alive</label>
+                        <input type="radio" id="Unknow" name="status" />
+                        <label for="Unknow">Unknow</label>
+                        <input type="radio" id="Dead" name="status" />
+                        <label for="Dead">Dead</label>
+                    </div>
+
+                    <!-- RADIO GENDER-->
+                    <div class="radio-box">
+                        <h2 class="radio-header">Gender</h2>
+                        <input type="radio" id="None_2" name="gender" />
+                        <label for="None_2">None</label>
+                        <input type="radio" id="Male" name="gender" />
+                        <label for="Male">Male</label>
+                        <input type="radio" id="Female" name="gender" />
+                        <label for="Female">Female</label>
+                    </div>
+
+                    <!-- RADIO SPECIES-->
+                    <div class="radio-box">
+                        <h2 class="radio-header">Species</h2>
+                        <input type="radio" id="None_3" name="species" />
+                        <label for="None_3">None</label>
+                        <input type="radio" id="Human" name="species" />
+                        <label for="Human">Human</label>
+                        <input type="radio" id="Superhuman" name="species" />
+                        <label for="Superhuman">Superhuman</label>
+                        <input type="radio" id="Humanoid" name="species" />
+                        <label for="Humanoid">Humanoid</label>
+                        <input type="radio" id="Alien" name="species" />
+                        <label for="Alien">Alien</label>
+                        <input type="radio" id="Unknow__species" name="species" />
+                        <label for="Unknow__species">Unknow</label>
+                    </div>
+                </div>
             </section>
         </main>
     </body>
