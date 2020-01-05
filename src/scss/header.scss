@@ -3,13 +3,26 @@
     height: 100vh;
 }
 
-h1.page-title {
+.rick-image {
+    width: 50%;
     position: absolute;
-    top: 78%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    color: $txt;
+    bottom: 0;
+    left: -3vw;
+
+    @include for-desktop-up {
+        width: 30%;
+    }
+}
+.morty-image {
+    width: 50%;
+    position: absolute;
+    right: -5vw;
+    bottom: 0;
+    margin-top: -10px;
+
+    @include for-desktop-up {
+        width: 30%;
+    }
 }
 
 .line {
@@ -62,9 +75,8 @@ h1.page-title {
     flex-direction: column;
     background: rgba($color: #000000, $alpha: 0.7);
     width: 100%;
-    height: 0%;
     visibility: hidden;
-    transform: translateY(710px);
+    transform: translateY(100%);
     transition: 0.3s;
     animation-timing-function: ease-in-out;
 
@@ -76,9 +88,15 @@ h1.page-title {
         margin: 0;
         transform: translateY(0);
         position: relative;
-        top: 10px;
     }
 }
+
+.menu-background {
+    background-color: #1b262c;
+    width: 100vw;
+    height: 7vh;
+}
+
 .menu-btn:first-of-type {
     margin-top: 160px;
 
@@ -103,14 +121,14 @@ h1.page-title {
 .show {
     visibility: visible;
     animation-timing-function: ease-in-out;
-    transform: translateY(40px);
-    height: 100%;
+    transform: translateY(1.9%);
+    height: 93%;
     transition: 0.3s;
 }
 
 .hamburger {
     position: absolute;
-    margin: 40px 0 0 0;
+    margin-top: 15px;
     right: 30px;
     padding: 0;
     background: none;
@@ -124,4 +142,53 @@ h1.page-title {
     @include for-desktop-up {
         display: none;
     }
+}
+
+.page-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    font-size: 48px;
+    color: #bbe1fa;
+    text-align: center;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 40%;
+    justify-content: center;
+}
+
+.search-field {
+    border-radius: 50px;
+    padding: 20px;
+    width: 80%;
+    background: #1b262c;
+    border: none;
+    text-align: center;
+    font-family: 'Gloria Hallelujah';
+    color: rgb(243, 243, 243);
+
+    @include for-desktop-up {
+        width: 30%;
+    }
+}
+
+.search-btn {
+    border: none;
+    height: 70px;
+    background: none;
+
+    @include for-desktop-up {
+        margin-left: 2%;
+    }
+}
+
+.invisible {
+    display: none;
 }

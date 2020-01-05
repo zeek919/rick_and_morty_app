@@ -1,8 +1,14 @@
+/* eslint-disable import/named */
 /* eslint-disable import/no-unresolved */
 import '../scss/main.scss';
 import { HAMBURGER_BUTTON, NAVIGATION_MENU } from './constants/hamburger';
-import { RADIO_SLIDER_BUTTON, RADIO_MENU } from './constants/characterSlider';
+import { PAGES_ARRAY } from './constants/pages';
+import { RequestBuilder } from './services/connectAPI';
 import { classToggler } from './utils/classToggler';
+import { changePage } from './containers/pageChanger';
+import { appendNumberOfPages } from './containers/appendNumberOfPages';
 
 classToggler(HAMBURGER_BUTTON, NAVIGATION_MENU, 'open', 'show');
-classToggler(RADIO_SLIDER_BUTTON, RADIO_MENU, 'arrow-slide', 'radio-menu-slide');
+changePage(PAGES_ARRAY);
+const a = RequestBuilder.makePages();
+appendNumberOfPages(a);

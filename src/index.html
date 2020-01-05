@@ -13,9 +13,6 @@
     </head>
     <body>
         <header class="header">
-            <img class="header-background" src="./src/images/header.png" alt="some trouble" />
-            <h1 class="page-title">CHARACTER</h1>
-
             <nav>
                 <!-- HAMBURGER BUTTON -->
                 <button class="hamburger closed" id="hamburger">
@@ -23,37 +20,35 @@
                 </button>
 
                 <!-- HAMBURGER MENU-->
-                <div class="menu" id="menu">
-                    <button class="menu-btn">Home</button>
-                    <button class="menu-btn">Character</button>
-                    <button class="menu-btn">Location</button>
-                    <button class="menu-btn">Favourite</button>
+                <div class="menu-background">
+                    <div class="menu" id="menu">
+                        <button class="menu-btn" id="home-btn">Home</button>
+                        <button class="menu-btn" id="character-btn">Character</button>
+                        <button class="menu-btn" id="location-btn">Location</button>
+                        <button class="menu-btn" id="favourite-btn">Favourite</button>
+                    </div>
+                </div>
+
+                <h1 class="page-title">Rick&Morty Libary</h1>
+                <div class="search-container">
+                    <input
+                        class="search-field"
+                        type="text"
+                        placeholder="Hi! I'm Mr. Meeseeks, look at me!"
+                    />
+                    <button class="search-btn">
+                        <img src="./src/images/send.png" />
+                    </button>
                 </div>
             </nav>
+
+            <img class="rick-image" src="./src/images/rick.png" />
+            <img class="morty-image" src="./src/images/morty.png" />
         </header>
 
         <main>
             <!-- HOME MENU-->
-            <section class="home">
-                <!-- CHARACTER NAME INPUT-->
-                <input
-                    class="search-field"
-                    type="text"
-                    placeholder="Hi! I'm Mr. Meeseeks, look at me!"
-                />
-                <button class="search-btn">
-                    <img src="./src/images/send.png" />
-                </button>
-            </section>
-
-            <!-- CHARACTER -->
-            <section class="character">
-                <!--RADIOS SHOW BUTTON-->
-                <button class="radio-slider" id="slider">
-                    <div class="arrow"></div>
-                </button>
-
-                <!-- CHARACTER RADIOS-->
+            <section class="home " id="home-page">
                 <div class="radio-container" id="radio-container">
                     <!-- RADIO STATUS -->
                     <div class="radio-box">
@@ -96,7 +91,16 @@
                         <label for="Unknow__species">Unknow</label>
                     </div>
                 </div>
+
+                <div class="numbers-of-page" id="numbers-of-page"></div>
             </section>
+
+            <!-- CHARACTER -->
+            <section class="character" id="character-page"></section>
+
+            <section class="location invisible" id="location-page"></section>
+
+            <section class="favourite invisible" id="favourite-page"></section>
         </main>
     </body>
 </html>
