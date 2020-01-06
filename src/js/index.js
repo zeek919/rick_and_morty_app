@@ -3,12 +3,17 @@
 import '../scss/main.scss';
 import { HAMBURGER_BUTTON, NAVIGATION_MENU } from './constants/hamburger';
 import { PAGES_ARRAY } from './constants/pages';
-import { RequestBuilder } from './services/connectAPI';
 import { classToggler } from './utils/classToggler';
-import { changePage } from './containers/pageChanger';
-import { appendNumberOfPages } from './containers/appendNumberOfPages';
+import { changePage } from './helpers';
+import { CharacterService } from './services';
+import { CHARACTER_FIELD } from './constants/filters';
 
 classToggler(HAMBURGER_BUTTON, NAVIGATION_MENU, 'open', 'show');
-changePage(PAGES_ARRAY);
-const a = RequestBuilder.makePages();
-appendNumberOfPages(a);
+// changePage(PAGES_ARRAY);
+
+const submitSearchButton = document.querySelector('#submit-search-btn');
+
+submitSearchButton.addEventListener('click', () => {
+    const characterService = new CharacterService(CHARACTER_FIELD.value);
+    characterService.init();
+});

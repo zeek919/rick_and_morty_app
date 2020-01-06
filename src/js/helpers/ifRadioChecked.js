@@ -10,7 +10,7 @@ import {
     SPECIES_HUMANOID,
     SPECIES_ALIEN,
     SPECIES_UNKNOW,
-} from '../constants/radioButtons';
+} from '../constants/filters';
 
 let statusValue = '';
 let genderValue = '';

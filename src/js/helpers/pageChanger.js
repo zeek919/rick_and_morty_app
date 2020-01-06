@@ -1,6 +1,6 @@
 import { TITLE_HEADER } from '../constants/pages';
 
-export const changePage = array => {
+const pageChanger = array => {
     array.forEach(element => {
         element.link.addEventListener('click', () => {
             array.forEach(item => {
@@ -13,3 +13,5 @@ export const changePage = array => {
         });
     });
 };
+
+export default pageChanger;
