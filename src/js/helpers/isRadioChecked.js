@@ -13,8 +13,8 @@ import {
 
 const isRadioChecked = () => {
     let statusValue = '';
-    let genderValue = '';
-    let speciesValue = '';
+    const genderValue = '';
+    const speciesValue = '';
 
     STATUS_ALIVE.checked ? (statusValue = '&status=alive') : (statusValue = '');
     STATUS_DEAD.checked ? (statusValue = '&status=dead') : (statusValue = '');
