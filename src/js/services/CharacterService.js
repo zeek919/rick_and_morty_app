@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { createCard, getPaginationLayout } from '../helpers';
+import { createCard, getPaginationLayout, isRadioChecked } from '../helpers';
+import { API_URL, CHARACTER_PATH } from '../constants/api_url';
 import { getFilterStatus } from '../helpers';
 
 class CharacterService {
@@ -18,21 +19,26 @@ class CharacterService {
 
     renderLayout() {
         const characterList = document.querySelector('#character-list');
+        characterList.classList.add('character-wraper');
         characterList.innerHTML = '';
-
-        this.characterData.forEach(item => {
-            const card = createCard({ name: item.name });
-            characterList.appendChild(card);
-        });
 
         const pagination = getPaginationLayout(this.pages, this.fetchNextPage);
         characterList.appendChild(pagination);
+
+        this.characterData.forEach(item => {
+            const card = createCard({
+                image: item.image,
+                name: item.name,
+                status: item.status,
+                gender: item.gender,
+                species: item.species,
+                origin: item.origin.name,
+            });
+            characterList.appendChild(card);
+        });
     }
 
     fetchNextPage = async page => {
-        const API_URL = 'https://rickandmortyapi.com/api';
-        const CHARACTER_PATH = '/character';
-
         try {
             const data = await axios.get(
                 `${API_URL}${CHARACTER_PATH}?name=${this.characterName}&page=${page}`
@@ -47,11 +53,11 @@ class CharacterService {
     };
 
     async getSingleCharacter() {
+        let radioStatus = isRadioChecked();
+        console.log(radioStatus);
         try {
-            const API_URL = 'https://rickandmortyapi.com/api';
-            const CHARACTER_PATH = '/character';
             const character = await axios.get(
-                `${API_URL}${CHARACTER_PATH}?name=${this.characterName}`
+                `${API_URL}${CHARACTER_PATH}?name=${this.characterName}${radioStatus}`
             );
 
             const { results, info } = character.data;
