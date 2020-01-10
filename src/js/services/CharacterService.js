@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { createCard, getPaginationLayout, isSomeoneChecked } from '../helpers/isRadioChecked';
 import { createCard, getPaginationLayout, isRadioChecked } from '../helpers';
 import { API_URL, CHARACTER_PATH } from '../constants/api_url';
 import { getFilterStatus } from '../helpers';
@@ -53,12 +54,13 @@ class CharacterService {
     };
 
     async getSingleCharacter() {
-        let radioStatus = isRadioChecked();
-        console.log(radioStatus);
         try {
+            const radioStatus = await isRadioChecked();
+            console.log(radioStatus);
             const character = await axios.get(
-                `${API_URL}${CHARACTER_PATH}?name=${this.characterName}${radioStatus}`
+                `${API_URL}${CHARACTER_PATH}?name=${this.characterName}${isRadioChecked()}`
             );
+            console.log(character);
 
             const { results, info } = character.data;
             this.characterData = results;
