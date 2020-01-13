@@ -3,6 +3,7 @@
 const getPaginationLayout = (number, onClick) => {
     const wrapper = document.createElement('div');
     wrapper.classList.add('pagination-wrapper');
+    wrapper.id = 'pagination-wrapper';
 
     for (let i = 1; i <= number; i++) {
         const button = document.createElement('button');

@@ -1,8 +1,6 @@
 import axios from 'axios';
-// import { createCard, getPaginationLayout, isSomeoneChecked } from '../helpers/isRadioChecked';
 import { createCard, getPaginationLayout, isRadioChecked } from '../helpers';
 import { API_URL, CHARACTER_PATH } from '../constants/api_url';
-import { getFilterStatus } from '../helpers';
 
 class CharacterService {
     constructor(characterName) {
@@ -15,16 +13,15 @@ class CharacterService {
     async init() {
         await this.getSingleCharacter();
         this.renderLayout();
-        console.log(this.characterData);
     }
 
     renderLayout() {
+        const characterPage = document.querySelector('#character-page');
         const characterList = document.querySelector('#character-list');
-        characterList.classList.add('character-wraper');
+        characterList.classList.add('character-wrapper');
         characterList.innerHTML = '';
 
         const pagination = getPaginationLayout(this.pages, this.fetchNextPage);
-        characterList.appendChild(pagination);
 
         this.characterData.forEach(item => {
             const card = createCard({
@@ -37,6 +34,12 @@ class CharacterService {
             });
             characterList.appendChild(card);
         });
+
+        const paginationWrapper = document.querySelector('#pagination-wrapper');
+        if (paginationWrapper) {
+            characterPage.removeChild(paginationWrapper);
+        }
+        characterPage.appendChild(pagination);
     }
 
     fetchNextPage = async page => {
@@ -56,7 +59,6 @@ class CharacterService {
     async getSingleCharacter() {
         try {
             const radioStatus = await isRadioChecked();
-            console.log(radioStatus);
             const character = await axios.get(
                 `${API_URL}${CHARACTER_PATH}?name=${this.characterName}${isRadioChecked()}`
             );
