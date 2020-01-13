@@ -13,8 +13,6 @@
     </head>
     <body>
         <header class="header">
-            <img class="header-background" src="./src/images/header.png" alt="some trouble" />
-
             <nav>
                 <!-- HAMBURGER BUTTON -->
                 <button class="hamburger closed" id="hamburger">
@@ -22,28 +20,84 @@
                 </button>
 
                 <!-- HAMBURGER MENU-->
-                <div class="menu" id="menu">
-                    <button class="menu-btn">Home</button>
-                    <button class="menu-btn">Character</button>
-                    <button class="menu-btn">Location</button>
-                    <button class="menu-btn">Favourite</button>
+                <div class="menu-background">
+                    <div class="menu" id="menu">
+                        <button class="menu-btn" id="character-btn">Characters</button>
+                        <button class="menu-btn" id="location-btn">Location</button>
+                        <button class="menu-btn" id="favourite-btn">Favourite</button>
+                    </div>
+                </div>
+
+                <h1 class="page-title">Rick&Morty Libary</h1>
+                <div class="search-container">
+                    <input
+                        class="search-field"
+                        type="text"
+                        placeholder="Hi! I'm Mr. Meeseeks, look at me!"
+                        id="character-field"
+                    />
+                    <button class="search-btn" id="submit-search-btn">
+                        <img src="./src/images/send.png" />
+                    </button>
                 </div>
             </nav>
+
+            <img class="rick-image" src="./src/images/rick.png" />
+            <img class="morty-image" src="./src/images/morty.png" />
         </header>
 
         <main>
-            <!-- HOME MENU-->
-            <section class="home">
-                <!-- CHARACTER NAME INPUT-->
-                <input
-                    class="search-field"
-                    type="text"
-                    placeholder="Hi! I'm Mr. Meeseeks, look at me!"
-                />
-                <button class="search-btn">
-                    <img src="./src/images/send.png" />
-                </button>
+            <!-- CHARACTER MENU-->
+            <section class="character " id="character-page">
+                <div class="radio-container" id="radio-container">
+                    <!-- RADIO STATUS -->
+                    <div class="radio-box">
+                        <h2 class="radio-header">Status</h2>
+                        <input type="radio" id="None_1" name="status" />
+                        <label for="None_1">None</label>
+                        <input type="radio" id="Alive" name="status" />
+                        <label for="Alive">Alive</label>
+                        <input type="radio" id="Unknow" name="status" />
+                        <label for="Unknow">Unknow</label>
+                        <input type="radio" id="Dead" name="status" />
+                        <label for="Dead">Dead</label>
+                    </div>
+
+                    <!-- RADIO GENDER-->
+                    <div class="radio-box">
+                        <h2 class="radio-header">Gender</h2>
+                        <input type="radio" id="None_2" name="gender" />
+                        <label for="None_2">None</label>
+                        <input type="radio" id="Male" name="gender" />
+                        <label for="Male">Male</label>
+                        <input type="radio" id="Female" name="gender" />
+                        <label for="Female">Female</label>
+                    </div>
+
+                    <!-- RADIO SPECIES-->
+                    <div class="radio-box">
+                        <h2 class="radio-header">Species</h2>
+                        <input type="radio" id="None_3" name="species" />
+                        <label for="None_3">None</label>
+                        <input type="radio" id="Human" name="species" />
+                        <label for="Human">Human</label>
+                        <input type="radio" id="Superhuman" name="species" />
+                        <label for="Superhuman">Superhuman</label>
+                        <input type="radio" id="Humanoid" name="species" />
+                        <label for="Humanoid">Humanoid</label>
+                        <input type="radio" id="Alien" name="species" />
+                        <label for="Alien">Alien</label>
+                        <input type="radio" id="Unknow__species" name="species" />
+                        <label for="Unknow__species">Unknow</label>
+                    </div>
+                </div>
+
+                <div id="character-list"></div>
             </section>
+
+            <section class="location invisible" id="location-page"></section>
+
+            <section class="favourite invisible" id="favourite-page"></section>
         </main>
     </body>
 </html>
