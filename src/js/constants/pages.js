@@ -6,8 +6,6 @@ const CHARACTER_PAGE = document.querySelector('#character-page');
 const LOCATION_PAGE = document.querySelector('#location-page');
 const FAVOURITE_PAGE = document.querySelector('#favourite-page');
 
-export const TITLE_HEADER = document.querySelector('#page-title');
-
 export const PAGES_ARRAY = [
     { link: CHARACTER_LINK_BUTTON, page: CHARACTER_PAGE, title: 'CHARACTER' },
     { link: LOCATION_LINK_BUTTON, page: LOCATION_PAGE, title: 'LOCATION' },
