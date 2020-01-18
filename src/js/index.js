@@ -4,12 +4,11 @@ import '../scss/main.scss';
 import { debounce } from 'lodash';
 import { HAMBURGER_BUTTON, NAVIGATION_MENU } from './constants/hamburger';
 import { PAGES_ARRAY } from './constants/pages';
-import { CHARACTER_FIELD } from './constants/filters';
-import { LOCATION_FIELD } from './constants/filters';
+import { CHARACTER_FIELD, LOCATION_FIELD } from './constants/filters';
+
 import { classToggler } from './utils/classToggler';
 import { pageChanger } from './helpers';
-import { CharacterService } from './services';
-import { LocationService } from './services';
+import { CharacterService, LocationService } from './services';
 
 classToggler(HAMBURGER_BUTTON, NAVIGATION_MENU, 'open', 'show');
 pageChanger(PAGES_ARRAY);
@@ -36,7 +35,12 @@ CHARACTER_FIELD.addEventListener('keypress', () => {
 });
 
 submitSearchLocationButton.addEventListener('click', () => {
-    console.log(LOCATION_FIELD.value);
     const locationService = new LocationService(LOCATION_FIELD.value);
     locationService.init();
+
+    const a = document.querySelector('#location-current-range');
+    a.addEventListener('click', () => {
+        locationService.locationName = LOCATION_FIELD.value;
+        locationService.getFilteredResults();
+    });
 });

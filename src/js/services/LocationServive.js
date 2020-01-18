@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { API_URL, LOCATION_PATH } from '../constants/api_url';
-import { createLocationCard, getPaginationLayout } from '../helpers';
+import { LOCATION_CARD_WRAPPER, LOCATION_PAGINATION_WRAPPER } from '../constants/location-wrappers';
+import { createLocationCard, getPaginationLayout, filterLocation } from '../helpers';
 
 class LocationService {
     constructor(locationName) {
         this.locationName = locationName;
         this.countOfPage = null;
         this.locationElements = [];
+        this.currentLocationElements = [];
     }
 
     init() {
@@ -20,6 +22,7 @@ class LocationService {
             );
             this.countOfPage = connectWithLocationURL.data.info.pages;
             this.locationElements = connectWithLocationURL.data.results;
+            this.currentLocationElements = this.locationElements;
             this.getCardLayout();
         } catch (err) {
             console.log(err);
@@ -27,15 +30,15 @@ class LocationService {
     }
 
     getCardLayout() {
-        const locationWrapper = document.querySelector('#location-card-wrapper');
-        locationWrapper.innerHTML = '';
+        LOCATION_CARD_WRAPPER.innerHTML = '';
+        LOCATION_PAGINATION_WRAPPER.innerHTML = '';
         this.locationElements.forEach(item => {
             const singleCard = createLocationCard(item.id, item.dimension, item.name, item.type);
-            locationWrapper.appendChild(singleCard);
+            LOCATION_CARD_WRAPPER.appendChild(singleCard);
         });
 
         const pagination = getPaginationLayout(this.countOfPage, this.getNextPage);
-        locationWrapper.appendChild(pagination);
+        LOCATION_PAGINATION_WRAPPER.appendChild(pagination);
     }
 
     getNextPage = async page => {
@@ -49,6 +52,13 @@ class LocationService {
             console.log(err);
         }
     };
+
+    getFilteredResults() {
+        LOCATION_CARD_WRAPPER.innerHTML = '';
+        LOCATION_PAGINATION_WRAPPER.innerHTML = '';
+        const singleFilteredCard = filterLocation(this.currentLocationElements, this.locationName);
+        LOCATION_CARD_WRAPPER.appendChild(singleFilteredCard);
+    }
 }
 
 export default LocationService;
