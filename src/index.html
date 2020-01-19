@@ -29,6 +29,15 @@
                 </div>
 
                 <h1 class="page-title">Rick&Morty Libary</h1>
+            </nav>
+
+            <img class="rick-image" src="./src/images/rick.png" />
+            <img class="morty-image" src="./src/images/morty.png" />
+        </header>
+
+        <main>
+            <!-- CHARACTER MENU-->
+            <section class="character " id="character-page">
                 <div class="search-container">
                     <input
                         class="search-field"
@@ -40,15 +49,6 @@
                         <img src="./src/images/send.png" />
                     </button>
                 </div>
-            </nav>
-
-            <img class="rick-image" src="./src/images/rick.png" />
-            <img class="morty-image" src="./src/images/morty.png" />
-        </header>
-
-        <main>
-            <!-- CHARACTER MENU-->
-            <section class="character " id="character-page">
                 <div class="radio-container" id="radio-container">
                     <!-- RADIO STATUS -->
                     <div class="radio-box">
@@ -95,7 +95,37 @@
                 <div id="character-list"></div>
             </section>
 
-            <section class="location invisible" id="location-page"></section>
+            <section class="location invisible" id="location-page">
+                <div class="search-container">
+                    <input
+                        class="search-field"
+                        type="text"
+                        placeholder="Hi! I'm Mr. Meeseeks, look at me!"
+                        id="location-field"
+                    />
+                    <button class="search-btn" id="submit-search-location-btn">
+                        <img src="./src/images/send.png" />
+                    </button>
+                </div>
+                <div class="data-range">
+                    <div class="custom-select">
+                        <ul>
+                            <li class="active">Current or every results?</li>
+                            <div class="sub-menu">
+                                <button id="location-whole-range" class="hidden">
+                                    Every results
+                                </button>
+                                <button id="location-current-range" class="hidden">
+                                    Current results
+                                </button>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="location-card-wrapper" class="location-card-wrapper"></div>
+                <div id="location-pagination" class="pagination-wrapper"></div>
+            </section>
 
             <section class="favourite invisible" id="favourite-page"></section>
         </main>

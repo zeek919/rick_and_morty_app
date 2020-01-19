@@ -1,4 +1,5 @@
 export const CHARACTER_FIELD = document.querySelector('#character-field');
+export const LOCATION_FIELD = document.querySelector('#location-field');
 
 export const STATUS_ALIVE = document.querySelector('#Alive');
 export const STATUS_UNKNOW = document.querySelector('#Unknow');

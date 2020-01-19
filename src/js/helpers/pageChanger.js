@@ -8,7 +8,6 @@ const pageChanger = array => {
                     item.page.classList.add('invisible');
                 }
             });
-            TITLE_HEADER.innerHTML = element.title;
             element.page.classList.remove('invisible');
         });
     });

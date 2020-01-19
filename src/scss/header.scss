@@ -158,12 +158,12 @@
 }
 
 .search-container {
-    position: relative;
+    position: absolute;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    top: 40%;
+    top: 30%;
     justify-content: center;
 }
 
