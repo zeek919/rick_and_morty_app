@@ -33,14 +33,13 @@ CHARACTER_FIELD.addEventListener('keypress', () => {
         debounce(characterService.init.bind(characterService), 100)
     );
 });
+const locationService = new LocationService();
 
 submitSearchLocationButton.addEventListener('click', () => {
-    const locationService = new LocationService(LOCATION_FIELD.value);
     locationService.init();
+});
 
-    const a = document.querySelector('#location-current-range');
-    a.addEventListener('click', () => {
-        locationService.locationName = LOCATION_FIELD.value;
-        locationService.getFilteredResults();
-    });
+const rangeOfCurrentArrayBtn = document.querySelector('#location-current-range');
+rangeOfCurrentArrayBtn.addEventListener('click', () => {
+    locationService.initForCurrentResults();
 });

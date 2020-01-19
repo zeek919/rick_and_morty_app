@@ -1,42 +1,78 @@
 import axios from 'axios';
 import { API_URL, LOCATION_PATH } from '../constants/api_url';
 import { LOCATION_CARD_WRAPPER, LOCATION_PAGINATION_WRAPPER } from '../constants/location-wrappers';
-import { createLocationCard, getPaginationLayout, filterLocation } from '../helpers';
+import { createLocationCard, getPaginationLayout, locationInputValue } from '../helpers';
 
 class LocationService {
-    constructor(locationName) {
-        this.locationName = locationName;
+    constructor() {
+        this.locationName = '';
+        this.searchedName = '';
         this.countOfPage = null;
         this.locationElements = [];
         this.currentLocationElements = [];
+
+        this.temporaryArray = [];
     }
 
     init() {
-        this.getSingleLocation();
+        this.setLocationName();
+        this.getSingleLocation(true);
     }
 
-    async getSingleLocation() {
+    initForCurrentResults() {
+        this.setSearchedName();
+        this.getSingleLocation(false);
+    }
+
+    setLocationName() {
+        this.locationName = locationInputValue();
+    }
+
+    setSearchedName() {
+        this.searchedName = locationInputValue();
+        this.filterSearchedArray();
+    }
+
+    filterSearchedArray() {
+        this.currentLocationElements = [];
+        this.locationElements.forEach(item => {
+            if (item.name.includes(this.searchedName)) {
+                this.currentLocationElements.push(item);
+            }
+        });
+    }
+
+    async getSingleLocation(flag) {
         try {
             const connectWithLocationURL = await axios.get(
                 `${API_URL}${LOCATION_PATH}/?name=${this.locationName}`
             );
             this.countOfPage = connectWithLocationURL.data.info.pages;
             this.locationElements = connectWithLocationURL.data.results;
-            this.currentLocationElements = this.locationElements;
-            this.getCardLayout();
+            this.getCardLayout(flag);
         } catch (err) {
             console.log(err);
         }
     }
 
-    getCardLayout() {
+    getCardLayout(flag) {
         LOCATION_CARD_WRAPPER.innerHTML = '';
         LOCATION_PAGINATION_WRAPPER.innerHTML = '';
-        this.locationElements.forEach(item => {
+
+        if (flag) {
+            this.temporaryArray = this.locationElements;
+            this.setPagination();
+        } else {
+            this.temporaryArray = this.currentLocationElements;
+        }
+
+        this.temporaryArray.forEach(item => {
             const singleCard = createLocationCard(item.id, item.dimension, item.name, item.type);
             LOCATION_CARD_WRAPPER.appendChild(singleCard);
         });
+    }
 
+    setPagination() {
         const pagination = getPaginationLayout(this.countOfPage, this.getNextPage);
         LOCATION_PAGINATION_WRAPPER.appendChild(pagination);
     }
@@ -47,18 +83,11 @@ class LocationService {
                 `${API_URL}${LOCATION_PATH}/?page=${page}&name=${this.locationName}`
             );
             this.locationElements = nextPage.data.results;
-            this.getCardLayout();
+            this.getCardLayout(true);
         } catch (err) {
             console.log(err);
         }
     };
-
-    getFilteredResults() {
-        LOCATION_CARD_WRAPPER.innerHTML = '';
-        LOCATION_PAGINATION_WRAPPER.innerHTML = '';
-        const singleFilteredCard = filterLocation(this.currentLocationElements, this.locationName);
-        LOCATION_CARD_WRAPPER.appendChild(singleFilteredCard);
-    }
 }
 
 export default LocationService;
