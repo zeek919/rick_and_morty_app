@@ -9,70 +9,37 @@ class LocationService {
         this.searchedName = '';
         this.countOfPage = null;
         this.locationElements = [];
-        this.currentLocationElements = [];
-
-        this.temporaryArray = [];
     }
 
-    init() {
-        this.setLocationName();
-        this.getSingleLocation(true);
+    async init(name) {
+        this.locationName = name;
+        await this.getSingleLocation();
     }
 
-    initForCurrentResults() {
-        this.setSearchedName();
-        this.getSingleLocation(false);
-    }
-
-    setLocationName() {
-        this.locationName = locationInputValue();
-    }
-
-    setSearchedName() {
-        this.searchedName = locationInputValue();
-        this.filterSearchedArray();
-    }
-
-    filterSearchedArray() {
-        this.currentLocationElements = [];
-        this.locationElements.forEach(item => {
-            if (item.name.includes(this.searchedName)) {
-                this.currentLocationElements.push(item);
-            }
-        });
-    }
-
-    async getSingleLocation(flag) {
+    async getSingleLocation() {
         try {
             const connectWithLocationURL = await axios.get(
                 `${API_URL}${LOCATION_PATH}/?name=${this.locationName}`
             );
             this.countOfPage = connectWithLocationURL.data.info.pages;
             this.locationElements = connectWithLocationURL.data.results;
-            this.getCardLayout(flag);
+            this.getCardLayout();
         } catch (err) {
             console.log(err);
         }
     }
 
-    getCardLayout(flag) {
+    getCardLayout() {
         LOCATION_CARD_WRAPPER.innerHTML = '';
-        LOCATION_PAGINATION_WRAPPER.innerHTML = '';
-
-        if (flag) {
-            this.temporaryArray = this.locationElements;
-            this.setPagination();
-        } else {
-            this.temporaryArray = this.currentLocationElements;
-        }
-
-        this.temporaryArray.forEach(item => {
+        this.locationElements.forEach(item => {
             const singleCard = createLocationCard(item.id, item.dimension, item.name, item.type);
             LOCATION_CARD_WRAPPER.appendChild(singleCard);
         });
+        this.setPagination();
     }
 
     setPagination() {
+        LOCATION_PAGINATION_WRAPPER.innerHTML = '';
         const pagination = getPaginationLayout(this.countOfPage, this.getNextPage);
         LOCATION_PAGINATION_WRAPPER.appendChild(pagination);
     }

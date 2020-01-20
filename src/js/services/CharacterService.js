@@ -31,6 +31,7 @@ class CharacterService {
                 gender: item.gender,
                 species: item.species,
                 origin: item.origin.name,
+                id: item.id,
             });
             characterList.appendChild(card);
         });
@@ -62,7 +63,6 @@ class CharacterService {
             const character = await axios.get(
                 `${API_URL}${CHARACTER_PATH}?name=${this.characterName}${isRadioChecked()}`
             );
-            console.log(character);
 
             const { results, info } = character.data;
             this.characterData = results;
