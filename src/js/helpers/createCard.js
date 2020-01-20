@@ -1,4 +1,4 @@
-const createCard = ({ image, name, status, gender, species, origin }) => {
+const createCard = ({ image, name, status, gender, species, origin, id }) => {
     const element = document.createElement('div');
     element.classList.add('character-card');
 
@@ -8,7 +8,12 @@ const createCard = ({ image, name, status, gender, species, origin }) => {
     <p>${status}</p>
     <p>${gender}</p>
     <p>${species}</p>
-    <p>${origin}</p>`;
+    <p>${origin}</p>
+    <div class="favourite-checkbox">
+    <input type="checkbox" id="${id}">
+    <label for="${id}"></label>
+    </div>
+   `;
 
     return element;
 };

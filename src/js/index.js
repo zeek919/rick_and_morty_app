@@ -25,21 +25,15 @@ submitSearchButton.addEventListener('click', async () => {
         .scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
 });
 
-CHARACTER_FIELD.addEventListener('keypress', () => {
+const searchByName = () => {
     const characterService = new CharacterService(CHARACTER_FIELD.value);
+    characterService.init();
+};
 
-    CHARACTER_FIELD.addEventListener(
-        'keypress',
-        debounce(characterService.init.bind(characterService), 100)
-    );
-});
+CHARACTER_FIELD.addEventListener('keypress', debounce(searchByName, 500));
+
 const locationService = new LocationService();
 
 submitSearchLocationButton.addEventListener('click', () => {
-    locationService.init();
-});
-
-const rangeOfCurrentArrayBtn = document.querySelector('#location-current-range');
-rangeOfCurrentArrayBtn.addEventListener('click', () => {
-    locationService.initForCurrentResults();
+    locationService.init(LOCATION_FIELD.value);
 });
