@@ -16,6 +16,7 @@
 
     @include for-desktop-up {
         grid-template-columns: repeat(4, 1fr);
+        left: 7%;
     }
 }
 

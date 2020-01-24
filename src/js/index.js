@@ -5,11 +5,13 @@ import { debounce } from 'lodash';
 import { HAMBURGER_BUTTON, NAVIGATION_MENU } from './constants/hamburger';
 import { PAGES_ARRAY } from './constants/pages';
 import { CHARACTER_FIELD, LOCATION_FIELD } from './constants/filters';
+import { localStorageService } from './constants/localStorageInstace';
 
 import { classToggler } from './utils/classToggler';
 import { pageChanger } from './helpers';
 import { CharacterService, LocationService } from './services';
 
+localStorageService.init();
 classToggler(HAMBURGER_BUTTON, NAVIGATION_MENU, 'open', 'show');
 pageChanger(PAGES_ARRAY);
 
