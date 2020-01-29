@@ -1,5 +1,3 @@
-import { TITLE_HEADER } from '../constants/pages';
-
 const pageChanger = array => {
     array.forEach(element => {
         element.link.addEventListener('click', () => {
