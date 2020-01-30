@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { createCard, getPaginationLayout, isRadioChecked } from '../helpers';
 import { API_URL, CHARACTER_PATH } from '../constants/api_url';
-
+import { FAVOURITE_CARD_WRAPPER } from '../constants/favourite-wrpper';
 class CharacterService {
-    constructor(characterName, localStorageService, favouriteService) {
+    constructor(characterName, localStorageService) {
         this.characterName = characterName;
         this.characterData = [];
         this.pages = null;
         this.characterCount = null;
         this.localStorageService = localStorageService;
-        this.favouriteService = favouriteService;
         this.localStorageKey = '';
     }
 

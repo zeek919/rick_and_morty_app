@@ -10,7 +10,7 @@ class LocalStorageService {
             const a = window.localStorage.getItem(key);
             this.database[key] = JSON.parse(a);
         }
-        this.favouriteService.checkCard(this.database);
+        this.favouriteService.init(this.database[key]);
     }
 
     swapArray(key) {
@@ -26,14 +26,15 @@ class LocalStorageService {
     addItem(key, image, name, status, gender, species, origin, id) {
         this.database[key].push({ image, name, status, gender, species, origin, id });
         this.swapArray(key);
-        this.favouriteService.checkCard(this.database);
+        this.favouriteService.init(this.database[key]);
     }
 
     removeItem(key, id) {
+        this.database[key] = this.favouriteService.returnDatabase();
         const filtered = this.database[key].filter(item => item.id !== id);
         this.database[key] = filtered;
         this.swapArray(key);
-        this.favouriteService.checkCard(this.database);
+        this.favouriteService.init(this.database[key]);
     }
 }
 export default LocalStorageService;

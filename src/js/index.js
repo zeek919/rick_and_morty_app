@@ -25,11 +25,7 @@ const favouriteService = new FavouriteService();
 const localStorageService = new LocalStorageService(favouriteService);
 
 submitSearchButton.addEventListener('click', async () => {
-    const characterService = new CharacterService(
-        CHARACTER_FIELD.value,
-        localStorageService,
-        favouriteService
-    );
+    const characterService = new CharacterService(CHARACTER_FIELD.value, localStorageService);
     await characterService.init('favourite');
 
     document
