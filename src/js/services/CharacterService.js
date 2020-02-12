@@ -1,18 +1,42 @@
 import axios from 'axios';
 import { createCard, getPaginationLayout, isRadioChecked } from '../helpers';
 import { API_URL, CHARACTER_PATH } from '../constants/api_url';
-
+import { FAVOURITE_CARD_WRAPPER } from '../constants/favourite-wrpper';
 class CharacterService {
-    constructor(characterName) {
+    constructor(characterName, localStorageService) {
         this.characterName = characterName;
         this.characterData = [];
         this.pages = null;
         this.characterCount = null;
+        this.localStorageService = localStorageService;
+        this.localStorageKey = '';
     }
 
-    async init() {
+    async init(key) {
+        this.localStorageKey = key;
         await this.getSingleCharacter();
         this.renderLayout();
+    }
+
+    addToLocalStorage(image, name, status, gender, species, origin, id) {
+        this.localStorageService.addItem(
+            this.localStorageKey,
+            image,
+            name,
+            status,
+            gender,
+            species,
+            origin,
+            id
+        );
+    }
+
+    removeFromLocalStorage(id) {
+        this.localStorageService.removeItem(this.localStorageKey, id);
+    }
+
+    checkIfItemAddedToLocalStorage(id) {
+        return this.localStorageService.checkIfAdded(this.localStorageKey, id);
     }
 
     renderLayout() {
@@ -32,6 +56,15 @@ class CharacterService {
                 species: item.species,
                 origin: item.origin.name,
                 id: item.id,
+                onClickAdd: (image, name, status, gender, species, origin, id) => {
+                    this.addToLocalStorage(image, name, status, gender, species, origin, id);
+                },
+                onClickRemove: id => {
+                    this.removeFromLocalStorage(id);
+                },
+                checkingEvent: id => {
+                    return this.checkIfItemAddedToLocalStorage(id);
+                },
             });
             characterList.appendChild(card);
         });

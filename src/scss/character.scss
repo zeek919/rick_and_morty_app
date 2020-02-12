@@ -132,3 +132,7 @@ input[type='radio']:checked + label:before {
     font-size: 24px;
     color: $txt;
 }
+
+.up {
+    margin-top: -50vh;
+}

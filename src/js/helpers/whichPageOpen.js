@@ -1,13 +1,13 @@
 import { debounce } from 'lodash';
 import { PAGES_ARRAY } from '../constants/pages';
 import { CHARACTER_FIELD } from '../constants/filters';
+// eslint-disable-next-line import/named
 import { CharacterService } from '../services';
 
 const submitSearchButton = document.querySelector('#submit-search-btn');
 
 const whichPageOpen = () => {
     if (!PAGES_ARRAY[0].page.classList.contains('invisible')) {
-        console.log('asdasdad');
         submitSearchButton.addEventListener('click', async () => {
             const characterService = new CharacterService(CHARACTER_FIELD.value);
             await characterService.init();
